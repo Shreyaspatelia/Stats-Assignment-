@@ -1,0 +1,73 @@
+Task 1. Classify Zomato Dataset Columns
+
+Restaurant Name   ------> Categorical (Nominal)
+Cuisine Type  -------->  Categorical (Nominal)
+Average Cost for Two. -------> Numerical (Continuous)
+User Rating ------->. Numerical (Continuos)
+City --------> Categorical (Nominal)
+Open/Closed Status --------> Categorical (Nominal)
+
+
+Task 2. Real-Life Examples and Measurement Scales
+
+Instagram -------> Ratio
+Flipkart --------> Nominal
+Netflix -------> Ordinal
+IRCTC -------> Interval
+Amazon ------> Nominal
+Uber -------> Ordinal
+Google Maps -------> Interval
+Spotify ---------> Ratio
+
+
+Task 3. Spotify Listening History
+
+Data --------> Time - Series
+It represents when the listening activity occured and allows to analyze
+
+Song Name --------> Categorical (Nominal)
+Song names are labels and have no natural order
+
+Play Count per Day -------> Numerical (Discrete)
+It represents the number of times a song was played such as 5, 10, or 25
+
+Task 4. Write a function or pseudocode that takes a column of data (array of values) from a Flipkart order history and automatically detects 
+whether it is likely Nominal, Ordinal, Interval, or Ratio scale. Briefly describe the logic used for each type.<br><br><em><strong>Constraint:
+</strong> You do not need to write a perfect algorithm — focus on simple rules based on value types and patterns.</em>
+
+FUNCTION detect_scale(column):
+
+    IF column contains text/categories:
+
+        IF categories have a natural order
+           (e.g., "Low", "Medium", "High"):
+            RETURN "Ordinal"
+
+        ELSE:
+            RETURN "Nominal"
+
+
+    ELSE IF column contains numbers:
+
+        IF values represent counts or amounts
+           where 0 means "none" and ratios are meaningful
+           (e.g., Quantity, Price, Discount):
+            RETURN "Ratio"
+
+        ELSE IF values are measurements where
+                differences are meaningful but 0 is not a true zero
+                (e.g., Temperature in °C):
+            RETURN "Interval"
+
+        ELSE:
+            RETURN "Ratio"   // default for numerical order data
+
+
+    ELSE:
+        RETURN "Unknown"
+
+
+
+
+
+
