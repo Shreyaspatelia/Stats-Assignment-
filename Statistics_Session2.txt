@@ -1,0 +1,143 @@
+Task 1. Create an array of 7 daily step counts (e.g., from your phone's fitness app) and write code to calculate the mean (average) number of 
+steps.
+
+Formula:
+
+Mean = Sum of all values ÷ Number of values
+
+Total steps = 47,500
+Number of days = 7
+Mean = 47,500 ÷ 7 = 6,785.714...
+
+Code:
+
+steps = [4500, 6200, 7800, 5100, 9000, 6700, 8200]
+
+mean = sum(steps) / len(steps)
+
+print("Daily step counts:", steps)
+print("Mean (average) number of steps:", mean)
+
+Output:  Daily step counts: [4500, 6200, 7800, 5100, 9000, 6700, 8200]
+              Mean (average) number of steps: 6785.714285714285
+
+
+
+Task 2. Given this list of food delivery times in minutes for your last 9 Zomato/Swiggy orders: [32, 28, 29, 45, 30, 31, 60, 30, 29], 
+write a function to find the median delivery time
+
+Formula:
+
+Median = the middle value when the data is arranged in ascending order
+
+delivery times are:
+[32, 28, 29, 45, 30, 31, 60, 30, 29]
+arrange them from smallest to largest:
+[28, 29, 29, 30, 30, 31, 32, 45, 60]
+
+There are 9 values in total and 9 is an odd number, there is exactly one value in the middle which is 30
+
+ so the median delivery time will be 30
+
+Code:
+
+def find_median(times):
+    times.sort()
+    n = len(times)
+
+    if n % 2 == 1:
+        return times[n // 2]
+    else:
+        n1 = times[n // 2 - 1]
+        n2 = times[n // 2]
+        return (n1 + n2) / 2
+
+
+times = [32, 28, 29, 45, 30, 31, 60, 30, 29]
+
+median = find_median(times)
+
+print("Median delivery time:", median)
+
+Output: Median delivery time: 30
+
+
+Task 3. Imagine you tracked the genres of 12 YouTube videos you watched this week: ['Music', 'Vlog', 'Music', 'Tech', 'Music', 'Vlog', 
+'Tech', 'Music', 'Comedy', 'Vlog', 'Music', 'Comedy']. Write code to determine the mode (most watched genre)
+
+Formula:
+
+Mode = the value that occurs most frequently
+
+Count each genre:
+Music = 5 times
+Vlog = 3 times
+Tech = 2 times
+Comedy = 2 times
+
+Music occurs the most among all genres which is 5 times
+So Music appears the most and it is the most watched genre
+
+Code:
+
+genres = ['Music', 'Vlog', 'Music', 'Tech', 'Music', 'Vlog',
+          'Tech', 'Music', 'Comedy', 'Vlog', 'Music', 'Comedy']
+
+mode = max(set(genres), key=genres.count)
+
+print("Most watched genre:", mode)
+
+Output: Most watched genre: Music
+
+
+Task 4.Take this array of daily UPI transaction amounts (in ₹): [100, 120, 105, 110, 5000, 115, 108]. Calculate both the mean and the median, 
+then explain in 2-3 lines which is a better measure of your 'typical' transaction and why.<br><br><em><strong>
+Hint:</strong> Consider the effect of the ₹5000 value.</em>
+
+Formula:
+
+Mean = Sum of all values ÷ Number of values
+
+Total = 5658  
+Number of values = 7
+Mean = 5658 ÷ 7 =  ₹808.285...
+
+So the mean becomes around ₹808
+
+Median = the middle value when the data is arranged in ascending order
+
+Transactions are:
+[100, 105, 108, 110, 115, 120, 5000]
+arrange them from smallest to largest:
+[100, 105, 108, 110, 115, 120, 5000]
+
+There are 7 values in total and 7 is an odd number, there is exactly one value in the middle which is ₹110
+
+Code:
+
+transactions = [100, 120, 105, 110, 5000, 115, 108]
+
+mean = sum(transactions) / len(transactions)
+
+transactions.sort()
+median = transactions[len(transactions) // 2]
+
+print("Mean:", mean)
+print("Median:", median)
+
+Output: Mean: 808.2857142857143
+             Median: 110	
+
+Considering the effect of the ₹5000 it pushes the mean way up because almost all transactions are around ₹100 – ₹120, while the median 
+remains ₹110. So median ₹110 is a better measure of the transaction because ₹5000 is an outlier which increases the mean
+
+
+
+
+
+
+
+
+
+
+
