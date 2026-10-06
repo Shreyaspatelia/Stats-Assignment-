@@ -1,73 +1,63 @@
-Task 1. Classify Zomato Dataset Columns
+Task 1. Open Microsoft Excel or Google Sheets, create a column named 'Order Amount', and
+ enter 20 random numbers between 100 and 1000 to simulate Zomato order values for a day.
 
-Restaurant Name   ------> Categorical (Nominal)
-Cuisine Type  -------->  Categorical (Nominal)
-Average Cost for Two. -------> Numerical (Continuous)
-User Rating ------->. Numerical (Continuos)
-City --------> Categorical (Nominal)
-Open/Closed Status --------> Categorical (Nominal)
+Zomato Order Amount
+250
+480
+720
+350
+910
+175
+620
+430
+800
+290
+550
+680
+125
+760
+390
+845
+510
+230
+970
+440
 
+Task 2. From your 'Order Amount' data, calculate the mean, median, and mode using Excel
+or Sheets functions (AVERAGE, MEDIAN, MODE) and write the results below your data.
 
-Task 2. Real-Life Examples and Measurement Scales
+After calculations:
 
-Instagram -------> Ratio
-Flipkart --------> Nominal
-Netflix -------> Ordinal
-IRCTC -------> Interval
-Amazon ------> Nominal
-Uber -------> Ordinal
-Google Maps -------> Interval
-Spotify ---------> Ratio
+Mean	526.25
+Median	495
+Mode	#N/A (No mode because none of the values occurs more than once)
 
+Task 3. Select the first 5 values from your 'Order Amount' column as a sample. Calculate the 
+sample mean and compare it to the population mean you found earlier.<br><br><em><strong>
+Hint:</strong> Use the AVERAGE function for both calculations and observe the difference 
+between sample and population means.</em>
 
-Task 3. Spotify Listening History
+First 5 zomato order amount
+250
+480
+720
+350
+910
 
-Data --------> Time - Series
-It represents when the listening activity occured and allows to analyze
+After calculations:
 
-Song Name --------> Categorical (Nominal)
-Song names are labels and have no natural order
+Mean for first 5 zomato order amount: 542
 
-Play Count per Day -------> Numerical (Discrete)
-It represents the number of times a song was played such as 5, 10, or 25
+The first 5 values mean 542 is slightly higher than the total mean 526.25. This shows that a sample 
+of only 5 values can give a different average compared with using the entire population of 20 values.
 
-Task 4. Write a function or pseudocode that takes a column of data (array of values) from a Flipkart order history and automatically detects 
-whether it is likely Nominal, Ordinal, Interval, or Ratio scale. Briefly describe the logic used for each type.<br><br><em><strong>Constraint:
-</strong> You do not need to write a perfect algorithm — focus on simple rules based on value types and patterns.</em>
+Task 4. Write a short paragraph explaining the difference between 'population' and 'sample' 
+using your Zomato order data as an example. Mention which one is more practical to use for
+a food delivery company and why.
 
-FUNCTION detect_scale(column):
-
-    IF column contains text/categories:
-
-        IF categories have a natural order
-           (e.g., "Low", "Medium", "High"):
-            RETURN "Ordinal"
-
-        ELSE:
-            RETURN "Nominal"
-
-
-    ELSE IF column contains numbers:
-
-        IF values represent counts or amounts
-           where 0 means "none" and ratios are meaningful
-           (e.g., Quantity, Price, Discount):
-            RETURN "Ratio"
-
-        ELSE IF values are measurements where
-                differences are meaningful but 0 is not a true zero
-                (e.g., Temperature in °C):
-            RETURN "Interval"
-
-        ELSE:
-            RETURN "Ratio"   // default for numerical order data
-
-
-    ELSE:
-        RETURN "Unknown"
-
-
-
-
+In the Zomato order data, the population represents all 20 order amounts collected for the day, while a sample represents only a smaller part of the data, such as the first 5 orders. The population 
+gives a complete picture, but analyzing a sample is usually more practical for a food delivery company
+because the company may have thousands or millions of orders. A representative sample saves 
+time and resources while still providing useful information about overall customer ordering patterns.
 
 
