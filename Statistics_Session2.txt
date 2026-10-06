@@ -1,139 +1,88 @@
-Task 1. Create an array of 7 daily step counts (e.g., from your phone's fitness app) and write code to calculate the mean (average) number of 
-steps.
+Task 1. Given the following columns from a mock Zomato restaurant dataset — Restaurant Name, 
+Cuisine Type, Average Cost for Two, User Rating, City, and Open/Closed Status — classify each 
+column as either Numerical (Continuous or Discrete) or Categorical (Nominal or Ordinal).
 
-Formula:
-
-Mean = Sum of all values ÷ Number of values
-
-Total steps = 47,500
-Number of days = 7
-Mean = 47,500 ÷ 7 = 6,785.714...
-
-Code:
-
-steps = [4500, 6200, 7800, 5100, 9000, 6700, 8200]
-
-mean = sum(steps) / len(steps)
-
-print("Daily step counts:", steps)
-print("Mean (average) number of steps:", mean)
-
-Output:  Daily step counts: [4500, 6200, 7800, 5100, 9000, 6700, 8200]
-              Mean (average) number of steps: 6785.714285714285
+Restaurant Name   ------> Categorical (Nominal)
+Cuisine Type  -------->  Categorical (Nominal)
+Average Cost for Two. -------> Numerical (Continuous)
+User Rating ------->. Numerical (Continuos)
+City --------> Categorical (Nominal)
+Open/Closed Status --------> Categorical (Nominal)
 
 
+Task 2. Real-Life Examples and Measurement Scales
 
-Task 2. Given this list of food delivery times in minutes for your last 9 Zomato/Swiggy orders: [32, 28, 29, 45, 30, 31, 60, 30, 29], 
-write a function to find the median delivery time
+Instagram -------> Ratio
+Flipkart --------> Nominal
+Netflix -------> Ordinal
+IRCTC -------> Interval
+Amazon ------> Nominal
+Uber -------> Ordinal
+Google Maps -------> Interval
+Spotify ---------> Ratio
 
-Formula:
 
-Median = the middle value when the data is arranged in ascending order
+Task 3. 
+Given this time-series data from a Spotify user's listening history — Date, Song Name, Play Count 
+per Day — identify which columns represent time-series, and which are categorical or numerical. 
+Explain your reasoning.
 
-delivery times are:
-[32, 28, 29, 45, 30, 31, 60, 30, 29]
-arrange them from smallest to largest:
-[28, 29, 29, 30, 30, 31, 32, 45, 60]
+Date	
+Type: Time-Series	 
+Classification:Time-Series
+Reason: It represents when the listening activity occurred and allows us to analyze trends over time.
 
-There are 9 values in total and 9 is an odd number, there is exactly one value in the middle which is 30
+Song Name
+Type: Categorical
+Classification: Nominal
+Reason: Song names are labels and have no numerical value or natural order.
 
- so the median delivery time will be 30
+Play Count per Day
+Type: Numerical 
+Classification: Discrete
+Reason: It represents the number of times a song was played, which is a count and usually takes 
+whole number values.
 
-Code:
+Task 4. Write a function or pseudocode that takes a column of data (array of values) from a Flipkart 
+order history and automatically detects whether it is likely Nominal, Ordinal, Interval, or Ratio scale. 
+Briefly describe the logic used for each type.<br><br><em><strong>Constraint:</strong> You do 
+not need to write a perfect algorithm — focus on simple rules based on value types and patterns.</em>
 
-def find_median(times):
-    times.sort()
-    n = len(times)
+def detect_scale(data):
+    if len(data) == 0:
+        return "Unknown"
 
-    if n % 2 == 1:
-        return times[n // 2]
+    # Numerical data
+    if all(isinstance(x, (int, float)) for x in data):
+
+        if min(data) >= 0:
+            return "Ratio"
+        else:
+            return "Interval"
+
+    # Categorical data
     else:
-        n1 = times[n // 2 - 1]
-        n2 = times[n // 2]
-        return (n1 + n2) / 2
+        ordinal_values = [
+            "Low", "Medium", "High",
+            "Poor", "Average", "Good", "Excellent",
+            "Pending", "Shipped", "Delivered"
+        ]
 
+        if all(x in ordinal_values for x in data):
+            return "Ordinal"
+        else:
+            return "Nominal"
 
-times = [32, 28, 29, 45, 30, 31, 60, 30, 29]
+# Example Flipkart order data
+order_status = ["Pending", "Shipped", "Delivered"]
 
-median = find_median(times)
+# Detect the measurement scale
+result = detect_scale(order_status)
 
-print("Median delivery time:", median)
+print("Measurement Scale:", result)
 
-Output: Median delivery time: 30
-
-
-Task 3. Imagine you tracked the genres of 12 YouTube videos you watched this week: ['Music', 'Vlog', 'Music', 'Tech', 'Music', 'Vlog', 
-'Tech', 'Music', 'Comedy', 'Vlog', 'Music', 'Comedy']. Write code to determine the mode (most watched genre)
-
-Formula:
-
-Mode = the value that occurs most frequently
-
-Count each genre:
-Music = 5 times
-Vlog = 3 times
-Tech = 2 times
-Comedy = 2 times
-
-Music occurs the most among all genres which is 5 times
-So Music appears the most and it is the most watched genre
-
-Code:
-
-genres = ['Music', 'Vlog', 'Music', 'Tech', 'Music', 'Vlog',
-          'Tech', 'Music', 'Comedy', 'Vlog', 'Music', 'Comedy']
-
-mode = max(set(genres), key=genres.count)
-
-print("Most watched genre:", mode)
-
-Output: Most watched genre: Music
-
-
-Task 4.Take this array of daily UPI transaction amounts (in ₹): [100, 120, 105, 110, 5000, 115, 108]. Calculate both the mean and the median, 
-then explain in 2-3 lines which is a better measure of your 'typical' transaction and why.<br><br><em><strong>
-Hint:</strong> Consider the effect of the ₹5000 value.</em>
-
-Formula:
-
-Mean = Sum of all values ÷ Number of values
-
-Total = 5658  
-Number of values = 7
-Mean = 5658 ÷ 7 =  ₹808.285...
-
-So the mean becomes around ₹808
-
-Median = the middle value when the data is arranged in ascending order
-
-Transactions are:
-[100, 105, 108, 110, 115, 120, 5000]
-arrange them from smallest to largest:
-[100, 105, 108, 110, 115, 120, 5000]
-
-There are 7 values in total and 7 is an odd number, there is exactly one value in the middle which is ₹110
-
-Code:
-
-transactions = [100, 120, 105, 110, 5000, 115, 108]
-
-mean = sum(transactions) / len(transactions)
-
-transactions.sort()
-median = transactions[len(transactions) // 2]
-
-print("Mean:", mean)
-print("Median:", median)
-
-Output: Mean: 808.2857142857143
-             Median: 110	
-
-Considering the effect of the ₹5000 it pushes the mean way up because almost all transactions are around ₹100 – ₹120, while the median 
-remains ₹110. So median ₹110 is a better measure of the transaction because ₹5000 is an outlier which increases the mean
-
-
-
-
+Output:
+Measurement Scale: Ordinal
 
 
 
